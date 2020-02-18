@@ -5,6 +5,6 @@ RUN apt-get update && \
     apt-get install -y hub && \
     apt-get install -y curl
 
-COPY UpdateMono.ps1 /
+COPY Run.ps1 /
 
 ENTRYPOINT [ "pwsh", "/Run.ps1" ]
