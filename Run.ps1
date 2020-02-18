@@ -2,7 +2,8 @@ git config --global user.email "prkrishn+bot@hotmail.com"
 git config --global user.name "Pranav K (bot)"
 
 $GITHUB_ACTOR="$env:GITHUB_ACTOR"
-$env:GITHUB_TOKEN="$GITHUB_TOKEN"
+$GITHUB_TOKEN="$env:GITHUB_TOKEN"
+
 $env:GITHUB_USER="$GITHUB_ACTOR"
 
 $baseUrl = "https://jenkins.mono-project.com/job/test-mono-mainline-wasm/lastStableBuild/label=ubuntu-1804-amd64/Azure/"
