@@ -1,8 +1,13 @@
 name: Update Mono action
 author: Pranav K <prkrishn+bot@hotmail.com>
 description: ⤵️ Update Mono
+inputs:
+    github_token:
+        description: Github token
+        required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
+
   env:
     GITHUB_TOKEN: ${{ inputs.github_token }}
