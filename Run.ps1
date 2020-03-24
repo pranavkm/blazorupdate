@@ -39,4 +39,4 @@ git add .
 git commit -m "Updating build to https://jenkins.mono-project.com/job/test-mono-mainline-wasm/$buildNumber"
 git push origin +update-mono:update-mono
 
-hub pull-request -b master -h update-mono --no-edit -r "SteveSandersonMS,javiercn,mkArtakMSFT"
+hub pull-request -b master -h update-mono --no-edit -l "auto-merge" -r "SteveSandersonMS,javiercn,mkArtakMSFT"
