@@ -6,7 +6,7 @@ $GITHUB_TOKEN="$env:GITHUB_TOKEN"
 
 $env:GITHUB_USER="$GITHUB_ACTOR"
 
-$baseUrl = "https://jenkins.mono-project.com/job/archive-mono/job/3.2-wasm/lastSuccessfulBuild/label=ubuntu-1804-amd64/Azure/"
+$baseUrl = "https://jenkins.mono-project.com/job/archive-mono/job/3.2-wasm/lastStableBuild/Azure/"
 
 $content = Invoke-WebRequest -Uri $baseUrl
 $match = $content -match ('<a href="(processDownloadRequest/(\d+)/.*?)"')
