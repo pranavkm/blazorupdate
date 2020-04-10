@@ -6,7 +6,7 @@ $GITHUB_TOKEN="$env:GITHUB_TOKEN"
 
 $env:GITHUB_USER="$GITHUB_ACTOR"
 
-$baseUrl = "hhttps://jenkins.mono-project.com/job/test-mono-mainline-wasm/lastStableBuild/Azure/"
+$baseUrl = "https://jenkins.mono-project.com/job/test-mono-mainline-wasm/lastStableBuild/Azure/"
 
 $content = Invoke-WebRequest -Uri $baseUrl
 $match = $content -match ('<a href="(processDownloadRequest/(\d+)/.*?)"')
@@ -39,4 +39,4 @@ git add .
 git commit -m "Updating build to https://jenkins.mono-project.com/job/test-mono-mainline-wasm/$buildNumber"
 git push origin +update-mono:update-mono
 
-hub pull-request -b master -h update-mono --no-edit -r "SteveSandersonMS,javiercn,mkArtakMSFT"
+hub pull-request -b master -h update-mono --no-edit -l "auto-merge" -r  "SteveSandersonMS,javiercn,mkArtakMSFT"
