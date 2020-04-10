@@ -35,7 +35,7 @@ git checkout master -B update-mono
 
 git remote set-url origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/dotnet/Blazor"
 git add .
-git commit -m "Updating build to commit $commitHash"
+git commit -m "Updating build to commit https://github.com/mono/mono/commit/$commitHash"
 git push origin +update-mono:update-mono
 
 hub pull-request -b master -h update-mono --no-edit -l "auto-merge" -r  "SteveSandersonMS,javiercn,mkArtakMSFT"
