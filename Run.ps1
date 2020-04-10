@@ -8,7 +8,7 @@ $env:GITHUB_USER="$GITHUB_ACTOR"
 $baseUrl = "https://jenkins.mono-project.com/job/archive-mono/job/3.2-wasm/lastSuccessfulBuild/Azure/"
 
 $content = Invoke-WebRequest -Uri $baseUrl
-$match = $content -match ('<a href="(processDownloadRequest/(\d+)/.*?)"')
+$match = $content -match ('<a href="(processDownloadRequest/sdks/wasm/mono-wasm-([^\.]+)\.zip)">')
 
 if (!$match) {
     Write-Error "Unable to find the artifact in $content"
@@ -16,7 +16,7 @@ if (!$match) {
 }
 
 $archivePath = $Matches[1]
-$buildNumber = $Matches[2]
+$commitHash = $Matches[2]
 
 $tempDir = [IO.Path]::Combine('/tmp', 'blazor-mono', [IO.Path]::GetRandomFileName())
 $downloadPath = Join-Path $tempDir 'mono.zip'
@@ -35,7 +35,7 @@ git checkout master -B update-mono
 
 git remote set-url origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/dotnet/Blazor"
 git add .
-git commit -m "Updating build to https://jenkins.mono-project.com/job/test-mono-mainline-wasm/$buildNumber"
+git commit -m "Updating build to commit $commitHash"
 git push origin +update-mono:update-mono
 
 hub pull-request -b master -h update-mono --no-edit -l "auto-merge" -r  "SteveSandersonMS,javiercn,mkArtakMSFT"
